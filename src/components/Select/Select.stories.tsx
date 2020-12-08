@@ -1,21 +1,21 @@
-import React from "react";
+import React, {ChangeEvent, useRef, useState} from 'react';
+import {Select} from './Select'
 
-type ItemsType = {
-    title: any
-    value: any
-}
 
-type SelectPropsType = {
-    value: any
-    onChange: (value: any) => void
-    items:ItemsType[]
-}
+export default {
+    title: 'Select stories',
+    component: Select,
+};
+export let SelectMode = () => {
+    const [collapsed, setCollapsed] = useState<boolean>(true)
+    const [value, setValue] = useState(2)
 
-function Select (props: SelectPropsType) {
-    return(
-        <div>
-            <div>{props.value}</div>
-            {props.items.map(i=> <div>{i.title}</div>)}
-        </div>
-    )
+    return (<div>
+        <Select items={[{title: "Minsk", value: 1}, {title: "Moscow", value: 2}, {title: "Kiev", value: 3}, {title: "Peter", value: 4}]}
+                value={value}
+                collapsed={collapsed}
+                onChange={()=>setCollapsed(!collapsed)}
+                onClickHandler={setValue}
+        />
+    </div>)
 }

@@ -1,17 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 type AccordionPropsType = {
     titleValue: string
-    collapsed: boolean
 }
 
-function Accordion (props: AccordionPropsType) {
+export function UnControlledAccordion (props: AccordionPropsType) {
+
+   // onClick={ () => { setCollapsed(collapsed ?  false : true) } }
+
+    let [collapsed, setCollapsed] = useState(false)
+
         return (
             <div>
-                <AccordionTitle title={props.titleValue}/>
-                { !props.collapsed && <AccordionBody/> }
+                <AccordionTitle title={props.titleValue} setCollapsed={()=> {setCollapsed(collapsed? false :true)}}/>
+                { collapsed && <AccordionBody/> }
             </div>
         )
 }
@@ -19,10 +23,11 @@ function Accordion (props: AccordionPropsType) {
 
 type AccordionTitlePropsType = {
     title: string
+    setCollapsed: () => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-    return <div><h1>-- {props.title} --</h1></div>
+    return <div><h1 onClick={ () => {  props.setCollapsed() } } >-- {props.title} --</h1></div>
 
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -40,4 +45,3 @@ function AccordionBody() {
     )
 }
 
-export default Accordion

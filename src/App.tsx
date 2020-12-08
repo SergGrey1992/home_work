@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import s from './App.module.css';
+import {Rating, RatingValueType} from "./components/Rating/Rating";
+import {Select} from "./components/Select/Select";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+
+
+
+    let [selectCollapsed, setSelectCollapsed] = useState<boolean>(false)
+    const swapCollapsed = (collapsed: boolean) => {
+        const swap = !selectCollapsed
+        setSelectCollapsed(swap)
+    }
+    const [collapsed, setCollapsed] = useState<boolean>(true)
+    const [value, setValue] = useState(2)
+
+
+    return (
+        <div className={s.wrapper}>
+
+            <Select items={[{title: "Minsk", value: 1}, {title: "Moscow", value: 2}, {title: "Kiev", value: 3}, {title: "Peter", value: 4}]}
+                    value={value}
+                    collapsed={collapsed}
+                    onChange={()=>setCollapsed(!collapsed)}
+                    onClickHandler={setValue}
+            />
+
+
+
+
+
+        </div>
+    );
 }
+
 
 export default App;

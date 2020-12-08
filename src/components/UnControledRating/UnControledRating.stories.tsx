@@ -1,19 +1,16 @@
 import React, {useState} from 'react';
 
-import {UnControlledAccordion} from "./UnControledAccordion";
+import {UnControledRating} from "./UnControledRating";
 
 
 export default {
-    title: 'UnControledAccordion stories',
-    component: UnControlledAccordion
+    title: 'UnControledRating stories',
+    component: UnControledRating
 
 }
-export const UnControlledAccordionOnMode = () => <UnControlledAccordion titleValue={"--Menu--"}/>
-export const UnControlledAccordionOffMode = () => <UnControlledAccordion  titleValue={"--Users--"}/>
-
 export const ModeChanging = () => {
     const [value, setValue] = useState <boolean> (true)
-    return <UnControlledAccordion titleValue={"--Users--"} />
+    return <UnControledRating />
 }
 
 

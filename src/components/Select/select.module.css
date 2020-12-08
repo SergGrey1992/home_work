@@ -1,30 +1,37 @@
-import React, {useState} from "react";
-
-type ItemsType = {
-    title: any
-    value: any
+.divUp {
+    color: #fffffe;
+    background-color: #16161a;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
 }
 
-type SelectPropsType = {
-    value: number
-    collapsed:boolean
-    onChange: (value: any) => void
-    onClickHandler:(value: any) => void
-    items: ItemsType[]
+.divEl {
+    margin: 2px;
+    display: flex;
+    color: #fffffe;
+    background-color: #7f5af0;
+    font-size: 25px;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease;
 }
 
-export function Select(props: SelectPropsType) {
-    let [collapsed, setCollapsed] = useState(false)
-    const value = props.items.find( f=> f.value === props.value )
-    const valueEl = props.items.map(i => <div onClick={()=> {
-            props.onClickHandler(i.value)
-            setCollapsed(!collapsed)
-    } } >{i.title}</div>)
 
-    return (
-        <div>
-            <div onClick={ ()=>{ setCollapsed(!collapsed) } } > { value && value.title}  </div>
-            {!collapsed && valueEl }
-        </div>
-    )
+.divEl:hover {
+    background: rgba(0, 0, 0, 0);
+    color: #3a7999;
+    box-shadow: inset 0 0 0 3px #3a7999;
+}
+
+.divUp:hover {
+    background: rgba(0, 0, 0, 0);
+    color: #3a7999;
+    box-shadow: inset 0 0 0 3px #3a7999;
 }
