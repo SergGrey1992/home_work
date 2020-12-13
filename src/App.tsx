@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import s from './App.module.css';
-import {Rating, RatingValueType} from "./components/Rating/Rating";
+import {RatingValueType} from "./components/Rating/Rating";
 import {Select} from "./components/Select/Select";
-
-
+import {MultiSelect} from "./components/MultiSelect/MultiSelect";
 
 function App() {
 
@@ -31,7 +30,7 @@ function App() {
                     onClickHandler={setValue}
             />
 
-
+    <MultiSelect/>
 
 
 
